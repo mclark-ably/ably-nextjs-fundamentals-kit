@@ -25,7 +25,7 @@ export default async function handler(
     }
 
   const clientId = req.body["clientId"] || process.env.DEFAULT_CLIENT_ID || "NO_CLIENT_ID";
-  const client = new Ably.Rest({key:process.env.ABLY_API_KEY,log:{level:4}});
+  const client = new Ably.Rest({key:process.env.ABLY_API_KEY,log:{level:4},queryTime:true});
   const tokenRequestData = await client.auth.createTokenRequest({ clientId: clientId });
 
   return res.status(200).json(tokenRequestData)
