@@ -21,7 +21,7 @@ export default function Authentication() {
       setConnectionState(stateChange.current)
     }
 
-    const ably: Ably.Types.RealtimePromise = configureAbly({ authUrl: '/api/authentication/token-auth' })
+    const ably: Ably.Types.RealtimePromise = configureAbly({ authUrl: '/api/authentication/token-auth',log:{ level:4})
     ably.connection.on(handleConnectionStateChange)
 
     return () => {
